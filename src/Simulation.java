@@ -3,11 +3,14 @@ import java.util.LinkedList;
 
 public class Simulation {
     private static int hikerCount;
+
+    /** Constructs a new Simulation object and sets the count of hikers to 0
+     */
     public Simulation() {
         hikerCount = 0;
     }
 
-    /**handles the bulk of the simulation, constructs all the stacks queues,
+    /**handles the bulk of the simulation, constructs all the stacks, queues,
      * and hikers necessary for the simulation. Also handles the timeline and
      * coordinating the events of simulation and UIHandler.
      */

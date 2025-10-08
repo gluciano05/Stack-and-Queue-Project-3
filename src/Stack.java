@@ -5,8 +5,13 @@ public class Stack <E> {
     private int capacity;
     private int size;
 
+    /** Contructs a stack and sets necessary attributes to default values.
+     * This does the following,
+     * sets top to -1,
+     * sets capacity to 10,
+     * instantiates this.data[] and casts it as a generic object.
+     */
     @SuppressWarnings("unchecked") //THE COMPILER IS ANNOYING ME WITH THIS WARNING I CANT ANYMORE
-
     public Stack() {
 
         /* I am aware I am hard coding but as per the instructions
