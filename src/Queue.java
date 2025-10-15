@@ -1,6 +1,11 @@
+import java.lang.reflect.Array;
+
+import java.util.ArrayList;
+
 //Queue implementation
+//Reason for arrayList, im using array bc im most comfortable with it.
 public class Queue <E> {
-    private E[] data;
+    private ArrayList<E> data;
     private int front;
     private int rear;
     private int capacity;
@@ -12,7 +17,13 @@ public class Queue <E> {
     @SuppressWarnings("unchecked")
     //I explained the reason for the "SuppressWarnings()" on line 7 of stack
     public Queue(int givenCapacity) {
-        data = (E[]) new Object[givenCapacity];
+        data = new ArrayList<E>();
+
+        //so we can use the set function.
+        for (int i = 0; i < givenCapacity; i++) {
+            data.add(null);
+        }
+
         capacity = givenCapacity;
         size = 0;
         front = 0;
@@ -20,7 +31,7 @@ public class Queue <E> {
     }
 
     /** If the queue is not full, adds the item to the rear of the queue
-     * then increments size and rear by 1.
+     * then increments size and moves rear to the next position.
      * @param item item is the given generic parameter for this function.
      * @throws RuntimeException if the queue is full
      */
@@ -28,14 +39,14 @@ public class Queue <E> {
         if (isFull()) {
             throw new RuntimeException("Cannot enqueue to a full queue");
         }
-        data[rear] = item;
-        rear++;
+        data.set(rear, item);
+        rear = (rear + 1) % capacity;
         size++;
     }
 
     /** If the queue is not empty, saves item at the front of the queue
-     * into a temporary variable, increments the front by 1 and decrements size by 1
-     * then, returns the temporary variable.
+     * into a temporary variable, increments front to the next position,
+     * decrements size by 1, then returns temporary variable.
      * @return returns the item at the front of the queue
      * @throws RuntimeException if the queue is empty
      */
@@ -43,8 +54,8 @@ public class Queue <E> {
         if (isEmpty()) {
             throw new RuntimeException("Cannot dequeue from an empty queue");
         }
-        E item = data[front];
-        front++;
+        E item = data.get(front);
+        front = (front + 1) % capacity;
         size--;
         return item;
     }
@@ -55,10 +66,11 @@ public class Queue <E> {
     public boolean isEmpty() {
         return size == 0;
     }
+
     /** Checks if the queue is full.
      * @return true if the rear equals the capacity - 1, else returns false
      */
     public boolean isFull() {
-        return rear == capacity - 1;
+        return size == capacity;
     }
 }
