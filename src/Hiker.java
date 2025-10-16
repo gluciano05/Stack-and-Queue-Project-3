@@ -1,3 +1,7 @@
+/** Represents a hiker with a number and creates a name using that number
+  * (i.e. hiker 1)
+  */
+
 public class Hiker {
     private int hikerNum;
     private String name;

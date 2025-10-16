@@ -1,9 +1,11 @@
-import java.lang.reflect.Array;
-
 import java.util.ArrayList;
 
-//Queue implementation
 //Reason for arrayList, im using array bc im most comfortable with it.
+
+/** A circular queue implementation using arrayList, is Generic to
+ * promote code reusability.
+ * @param <E>
+ */
 public class Queue <E> {
     private ArrayList<E> data;
     private int front;
@@ -74,6 +76,7 @@ public class Queue <E> {
         return size == capacity;
     }
 
+    /** doubles the queue's capacity when full. */
     private void reallocate() {
         int newCapacity = 2 * capacity;
         ArrayList<E> newData = new ArrayList<E>();

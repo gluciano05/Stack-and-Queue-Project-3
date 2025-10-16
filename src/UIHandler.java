@@ -19,7 +19,7 @@ public class UIHandler extends JFrame {
     public void setupUI() {
         setLayout(new BorderLayout());
         statusLabel = new JLabel("", SwingConstants.CENTER);
-        statusLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        statusLabel.setFont(new Font("Arial", Font.BOLD, 16));
         add(statusLabel, BorderLayout.NORTH);
 
         textArea = new JTextArea(90, 1);
@@ -58,7 +58,7 @@ public class UIHandler extends JFrame {
             sim.closeTrial();
             statusLabel.setText("This is the order the hikers finished the trial: ");
             textArea.setText(sim.getListOfHikers() +
-                    "\n" + sim.getHikersPerEntrance() +
+                    "\n" + sim.getEntranceBreakdown() +
                     "\n\nTotal Hikers: " + sim.getHikerCount());
             closeTrialButton.setEnabled(false);
         });
