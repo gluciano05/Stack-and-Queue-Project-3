@@ -1,3 +1,4 @@
+import java.util.ArrayDeque;
 import java.util.Collection;
 import java.util.Deque;
 import java.util.EmptyStackException;
@@ -6,10 +7,7 @@ import java.util.Iterator;
 //Stack Implementation
 //Deque reason, I'm using deque because im curious how implementing it will look.
 public class Stack <E> implements Deque<E> {
-    private E[] data;
-    private int top;
-    private int capacity;
-    private int size;
+    private ArrayDeque<E> data;
 
     /** Contructs a stack and sets necessary attributes to default values.
      * This does the following,
@@ -17,58 +15,44 @@ public class Stack <E> implements Deque<E> {
      * sets capacity to 10,
      * instantiates this.data[] and casts it as a generic object.
      */
-    @SuppressWarnings("unchecked") //THE COMPILER IS ANNOYING ME WITH THIS WARNING I CANT ANYMORE
     public Stack() {
-
-        /* I am aware I am hard coding but as per the instructions
-         * Stacks are limited to 10 hikers per.
-         * "As soon as a stack becomes full (has 10 hikers in it)"
-         */
-
-        this.data = (E[]) new Object[10];
-        this.top = -1;
-        this.capacity = 10;
+        this.data = new ArrayDeque<E>();
     }
-
     @Override
-    public E peekLast() {
-        return data[top];
+    public void push(E e) {
+        data.push(e);
     }
-
     @Override
-    public void addLast(E item) {
-        if (isFull()) {
-            throw new IllegalStateException();
-        }
-        top++;
-        data[top] = item;
+    public E pop() {
+        return data.pop();
     }
-
     @Override
-    public E pollLast() {
-        if (isEmpty()) {
-            throw new EmptyStackException();
-        }
-        E temp = data[top];
-        data[top] = null;
-        top--;
-        return temp;
+    public E peek() {
+        return data.peek();
     }
-
     @Override
     public boolean isEmpty() {
-        return top == -1;
-    }
-
-    public boolean isFull() {
-        return top == (capacity - 1);
-    }
-
-    public int setSize() {
-        return top + 1;
+        return data.isEmpty();
     }
 
     //NEED THESE SO CLASS ISN'T ABSTRACT
+    @Override
+    public E peekLast() {
+        return null;
+    }
+    @Override
+    public void addLast(E item) {
+    }
+    @Override
+    public E pollLast() {
+        return null;
+    }
+    public int setSize() {
+        return 0;
+    }
+    public boolean isFull() {
+        return false;
+    }
     @Override
     public boolean removeFirstOccurrence(Object o) {
         return false;
@@ -98,10 +82,6 @@ public class Stack <E> implements Deque<E> {
         return null;
     }
     @Override
-    public E peek() {
-        return null;
-    }
-    @Override
     public boolean addAll(Collection<? extends E> c) {
         return false;
     }
@@ -116,13 +96,7 @@ public class Stack <E> implements Deque<E> {
     @Override
     public void clear() {
     }
-    @Override
-    public void push(E e) {
-    }
-    @Override
-    public E pop() {
-        return null;
-    }
+
     @Override
     public boolean remove(Object o) {
         return false;

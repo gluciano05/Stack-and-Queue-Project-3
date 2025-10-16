@@ -28,6 +28,6 @@ public class Hiker {
      */
     @Override
     public String toString() {
-        return "Hiker" + hikerNum + "\n";
+        return "hiker" + hikerNum;
     }
 }

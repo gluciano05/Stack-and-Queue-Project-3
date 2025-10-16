@@ -37,7 +37,7 @@ public class Queue <E> {
      */
     public void enqueue(E item) {
         if (isFull()) {
-            throw new RuntimeException("Cannot enqueue to a full queue");
+            reallocate();
         }
         data.set(rear, item);
         rear = (rear + 1) % capacity;
@@ -72,5 +72,26 @@ public class Queue <E> {
      */
     public boolean isFull() {
         return size == capacity;
+    }
+
+    private void reallocate() {
+        int newCapacity = 2 * capacity;
+        ArrayList<E> newData = new ArrayList<E>();
+
+        for (int i = 0; i < newCapacity; i++) {
+            newData.add(null);
+        }
+
+        int newIndex = 0;
+        for (int i = 0; i < size; i++) {
+            int oldIndex = (front + i) % capacity;
+            newData.set(newIndex, data.get(oldIndex));
+            newIndex++;
+        }
+
+        data = newData;
+        front = 0;
+        rear = size;
+        capacity = newCapacity;
     }
 }
