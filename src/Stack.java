@@ -1,7 +1,6 @@
 import java.util.ArrayDeque;
 import java.util.Collection;
 import java.util.Deque;
-import java.util.EmptyStackException;
 import java.util.Iterator;
 
 //Stack Implementation
@@ -18,18 +17,34 @@ public class Stack <E> implements Deque<E> {
     public Stack() {
         this.data = new ArrayDeque<E>();
     }
+
+    /** Pushes an element onto the top of the stack.
+     * @param e the element to be pushed
+     */
     @Override
     public void push(E e) {
         data.push(e);
     }
+
+    /** Removes and returns the element at the top of the stack.
+     * @return the element at the top of the stack
+     */
     @Override
     public E pop() {
         return data.pop();
     }
+
+    /** Returns the element at the top of the stack without removing it.
+     * @return the element at the top of the stack
+     */
     @Override
     public E peek() {
         return data.peek();
     }
+
+    /** Checks if the stack is empty.
+     * @return true if the stack is empty, else returns false
+     */
     @Override
     public boolean isEmpty() {
         return data.isEmpty();

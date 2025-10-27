@@ -13,6 +13,7 @@ public class Simulation {
     private String listOfHikers;
     private int[] hikersPerEntrance;
 
+    /** Constructs a simulation and initializes the necessary data structures. */
     public Simulation() {
         entranceQueues = new ArrayList<Queue<Stack<Hiker>>>();
         hikersPerEntrance = new int[3];
@@ -56,6 +57,13 @@ public class Simulation {
         }
     }
 
+    /** Opens the trial and processes hikers from each entrance.
+     * This function does the following:
+     * Processes each entrance in order,
+     * Dequeues stacks and handles full stacks first then partial stacks,
+     * Limits each entrance to 20 hikers,
+     * Writes hiker information to hikersGoingUp.txt
+     */
     public void openTrial() {
         StringBuilder result = new StringBuilder();
         ArrayList<Hiker> allHikers = new ArrayList<>();
@@ -148,6 +156,11 @@ public class Simulation {
         }
     }
 
+    /** Closes the trial and processes hikers returning in reverse order.
+     * This function does the following:
+     * Reverses the order of hikers from the going up list,
+     * Writes the reversed order to hikersComingDown.txt
+     */
     public void closeTrial() {
         try (FileWriter writer = new FileWriter("hikersComingDown.txt")) {
             //splits list of hikers into individual entries
@@ -179,10 +192,16 @@ public class Simulation {
     }
 
     //UTILITY FUNCTIONS:
+    /** Returns the total number of hikers registered.
+     * @return the total hiker count
+     */
     public int getHikerCount() {
         return hikerCount;
     }
 
+    /** Returns a list of all registered hikers.
+     * @return a string containing all hikers in the format "hikerX"
+     */
     public String getAllHikersRegistered() {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < hikerCount; i++) {
@@ -190,11 +209,19 @@ public class Simulation {
         }
         return stringBuilder.toString();
     }
+
+    /** Returns the number of hikers that went through each entrance.
+     * @return a string showing hikers per entrance
+     */
     public String getHikersPerEntrance() {
         return  "Entrance 0: " + hikersPerEntrance[0] + " hikers\n" +
                 "Entrance 1: " + hikersPerEntrance[1] + " hikers\n" +
                 "Entrance 2: " + hikersPerEntrance[2] + " hikers";
     }
+
+    /** Returns the breakdown of stack sizes for each entrance.
+     * @return a string containing the entrance breakdown information
+     */
     public String getEntranceBreakdown() {
         StringBuilder result = new StringBuilder();
         for (String line : entranceBreakdown) {
@@ -202,6 +229,10 @@ public class Simulation {
         }
         return result.toString();
     }
+
+    /** Returns the current list of hikers.
+     * @return a string containing the list of hikers
+     */
     public String getListOfHikers() {
         return listOfHikers;
     }
