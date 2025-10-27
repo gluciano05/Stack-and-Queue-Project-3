@@ -1,6 +1,6 @@
-import java.util.ArrayList;
-
+//coded by Gabriel Luciano
 //Reason for arrayList, im using array bc im most comfortable with it.
+import java.util.ArrayList;
 
 /** A circular queue implementation using arrayList, is Generic to
  * promote code reusability.

@@ -1,6 +1,8 @@
+//coded by Gabriel Luciano
 import javax.swing.*;
 import java.awt.*;
 
+//UIHandler implementation
 public class UIHandler extends JFrame {
     private final Simulation sim;
     private JTextArea textArea;

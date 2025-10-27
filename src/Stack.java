@@ -1,19 +1,15 @@
+//coded by Gabriel Luciano
+//Deque reason, I'm using deque because im curious how implementing it will look.
 import java.util.ArrayDeque;
 import java.util.Collection;
 import java.util.Deque;
 import java.util.Iterator;
 
 //Stack Implementation
-//Deque reason, I'm using deque because im curious how implementing it will look.
 public class Stack <E> implements Deque<E> {
     private ArrayDeque<E> data;
 
-    /** Contructs a stack and sets necessary attributes to default values.
-     * This does the following,
-     * sets top to -1,
-     * sets capacity to 10,
-     * instantiates this.data[] and casts it as a generic object.
-     */
+    /** Constructs a stack using ArrayDeque */
     public Stack() {
         this.data = new ArrayDeque<E>();
     }
