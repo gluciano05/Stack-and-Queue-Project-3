@@ -16,8 +16,6 @@ public class Queue <E> {
     /** Constructor for my Queue implementation
      * @param givenCapacity is the given capacity of the queue.
      */
-    @SuppressWarnings("unchecked")
-    //I explained the reason for the "SuppressWarnings()" on line 7 of stack
     public Queue(int givenCapacity) {
         data = new ArrayList<E>();
 
