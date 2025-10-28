@@ -1,9 +1,9 @@
 //coded by Gabriel Luciano
-//Reason for arrayList, im using array bc im most comfortable with it.
+//Reason for arrayList, im using arrayList because im most comfortable with it.
 import java.util.ArrayList;
 
-/** A circular queue implementation using arrayList, is Generic to
- * promote code reusability.
+/** A circular queue implementation using arrayList, is generic to
+ * promote code reusability. Uses industry standard Queue operations (enqueue, dequeue, and peek)
  * @param <E>
  */
 public class Queue <E> {
@@ -58,6 +58,13 @@ public class Queue <E> {
         front = (front + 1) % capacity;
         size--;
         return item;
+    }
+
+    public E peek() {
+        if (isEmpty()) {
+            throw new RuntimeException("Cannot peek from an empty queue");
+        }
+        return data.get(front);
     }
 
     /** Checks if the queue is empty.

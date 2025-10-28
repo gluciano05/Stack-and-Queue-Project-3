@@ -1,11 +1,15 @@
 //coded by Gabriel Luciano
-//Deque reason, I'm using deque because im curious how implementing it will look.
+//Reason for deque, I'm using deque because im curious how implementing it will look.
 import java.util.ArrayDeque;
 import java.util.Collection;
 import java.util.Deque;
 import java.util.Iterator;
 
-//Stack Implementation
+/** A stack implementation using ArrayDeque, the stack holds up to 10 Hikers
+ * and uses industry standard Stack operations (push, pop, and peek) and an additional auxiliary function (isEmpty). Stack is generic
+ * to promote code flexibility and reusability.
+ * @param <E>
+ */
 public class Stack <E> implements Deque<E> {
     private ArrayDeque<E> data;
 
